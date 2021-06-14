@@ -1,0 +1,23 @@
+<div class="container">
+    <h4 class="text">User Login</h4>
+    
+    <div class="login-form d-flex justify-content-center">
+        <form #userLogin ="ngForm" (submit) = "userAuthenticate(userLogin.value)">
+           <div class="form-group">
+              <label>User Name</label>
+              <input type="text" class="form-control" placeholder="User Name" name="userName" #userName="ngModel" required ngModel>
+              <span class="text-danger" *ngIf="userName.dirty && userName.invalid"> Enter User Name!</span>
+           </div>
+           <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control" placeholder="Password" name="userPassword" #userPassword="ngModel" required ngModel>
+              <span class="text-danger" *ngIf="userPassword.dirty && userPassword.invalid"> Enter Password!</span>
+           </div>
+           <button type="submit" class="btn btn-secondary">Login</button>
+           <button type="submit" class="btn" (click)="goToRegistration()">New User Register</button>
+        </form>
+     </div>
+     <div *ngIf = "!isValid">
+      <p style="color:red;"> Incorrect UserName/Password</p>
+   </div>
+</div>

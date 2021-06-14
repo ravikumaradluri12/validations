@@ -1,0 +1,42 @@
+<div class="container">
+    <h4 class="text">New User Registration</h4>
+    <div class="login-form">
+        <form [formGroup]="userRegisterForm" (ngSubmit)="onSubmit()">
+           <div class="form-group">
+              <label>Name</label>
+              <input type="text" class="form-control" placeholder="Enter Your Name" formControlName="userName">
+              <span class="text-danger" *ngIf="(userRegisterFormControl.userName.touched || submitted) && userRegisterFormControl.userName.errors?.required">Enter User Name!</span>
+              <span class="text-danger" *ngIf="userRegisterFormControl.userName.touched && userRegisterFormControl.userName.errors?.pattern">Enter Valid User Name!</span>
+            </div>
+            <div class="form-group">
+               <label>Email ID</label>
+               <input type="text" class="form-control" placeholder="Enter Your Mail Id" formControlName="userMailId">
+               <span class="text-danger" *ngIf="(userRegisterFormControl.userMailId.touched || submitted) && userRegisterFormControl.userMailId.errors?.required"> Enter Your Mail Id!</span>
+               <span class="text-danger" *ngIf="userRegisterFormControl.userMailId.touched && userRegisterFormControl.userMailId.errors?.email"> Enter Valid Mail Id!</span> 
+            </div>
+            <div class="form-group">
+               <label>Mobile Number</label>
+               <input type="text" class="form-control" placeholder="Enter Your Mobile Number" formControlName="userMobileNo">
+               <span class="text-danger" *ngIf="(userRegisterFormControl.userMobileNo.touched || submitted) && userRegisterFormControl.userMobileNo.errors?.required"> Enter Your Mobile Number!</span>
+               <span class="text-danger" *ngIf="userRegisterFormControl.userMobileNo.touched && userRegisterFormControl.userMobileNo.errors?.pattern"> Enter Valid Mobile Number!</span>
+            </div>
+              <div class="form-group">
+                 <label>Create Password</label>
+                 <input type="password" class="form-control" placeholder="Create Password Here" formControlName="userPassword">
+                 <span class="text-danger" *ngIf="(userRegisterFormControl.userPassword.touched || submitted) && userRegisterFormControl.userPassword.errors?.required"> Enter Your Password!</span>
+                 <span class="text-danger" *ngIf="userRegisterFormControl.userPassword.touched && userRegisterFormControl.userPassword.errors?.pattern"> Enter Valid Password!</span>
+               </div>
+              <div class="form-group">
+               <label>Re-Enter Password</label>
+               <input type="password" class="form-control" placeholder="Re-Enter Password Here" formControlName="confirmPassword">
+               <span class="text-danger" *ngIf="(userRegisterFormControl.confirmPassword.touched || submitted) && userRegisterFormControl.confirmPassword.errors?.required"> Enter Your Password to confirm!</span>
+                 <span class="text-danger" *ngIf="userRegisterFormControl.confirmPassword.touched && userRegisterFormControl.confirmPassword.errors?.confirmedValidator"> Entered Password Doesn't match!</span>
+            </div>
+              <button type="submit" class="btn btn-secondary" style="width: 20%;">Register</button>
+        </form>
+     </div>
+     <div *ngIf = "isCorrect"> 
+      <div class="d-flex justify-content-center"><h5>Account Created !!</h5></div>
+      <div class="d-flex justify-content-center"><button type="button" class="btn btn-primary" (click)="routeToLogin()">Okay</button></div>
+   </div>
+</div>
