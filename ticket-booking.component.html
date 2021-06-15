@@ -1,0 +1,43 @@
+<div class="container">
+    <h4 class="text-center">Book Ticket</h4>
+    <h5>Search Results for</h5>
+    
+    <table class ="table table-borderless">
+        <thead>
+            <th>From</th>
+            <th>To</th>
+            <th>Journey Date</th>
+        </thead>
+        <tbody>
+            <tr *ngFor ="let availableFlight of searchAvailableFlights.searchFlightDetails | slice:0:1; let last=last">
+                
+                <td *ngIf="last">{{availableFlight.source}} </td>
+                <td *ngIf="last">{{availableFlight.destination}}</td>
+                <td *ngIf="last">{{availableFlight.departureTime }}</td>
+            </tr>
+        </tbody>
+        <thead>
+            <th>Flight Name</th>
+            <th>Flight Number</th>
+            <th>Available Seat</th>
+            <th>Departure Time</th>
+            <th>Arrival Time</th>
+            <th>Duration</th>
+            <th>Price</th>
+            
+        </thead>
+        <tbody>
+            <tr *ngFor ="let availableFlight of searchAvailableFlights.searchFlightDetails">
+                <td>{{availableFlight.flightName}}</td>
+                <td>{{availableFlight.flightNumber}}</td>
+                <td>{{availableFlight.totalSeat}}</td>
+                <td>{{availableFlight.departureTime}}</td>
+                <td>{{availableFlight.arrivalTime }}</td>
+                <td>{{availableFlight.durationHrs}}<i>Hrs</i>&nbsp;{{availableFlight.durationMins}}<i>Mins</i></td>
+                <td>{{availableFlight.ticketRate}}</td>
+                <td><button type="submit" class="btn btn-primary" [routerLink]="['confirmBooking/',availableFlight.flightNumber]">Book</button></td>
+        </tbody>
+    </table>
+    
+</div>
+

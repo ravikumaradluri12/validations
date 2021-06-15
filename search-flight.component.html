@@ -1,0 +1,50 @@
+<div class="container">
+    <div *ngFor="let user of searchFlights.currentUser">
+       <h3>Welcome <span>{{user.userName}}</span>,</h3>
+    </div>
+     <h4 class="text">Search Ticket</h4>
+     
+     <div class="login-form">
+         <form [formGroup]="searchFlightForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+               <label>From</label>
+               <input list="source" class="form-control" placeholder="Enter Origin" formControlName="source">
+               <datalist id="source">
+                   <option value = "Chennai">
+                   <option value = "Madurai">
+                   <option value = "Hyderabad">
+                   <option value = "Bangalore">
+                   <option value = "Delhi">
+                   <option value = "Mumbai">
+                   <option value = "Kolkata">
+               </datalist>
+               <span class="text-danger" *ngIf="(searchFlightFormControl.source.touched || submitted) && searchFlightFormControl.source.errors?.required">Enter Origin Airport!</span>
+            </div>
+            <div class="form-group">
+             <label>To</label>
+             <input list="destination" class="form-control" placeholder="Enter Departure" formControlName="destination">
+             <datalist id="destination">
+                 <option value = "Chennai">
+                 <option value = "Madurai">
+                 <option value = "Hyderabad">
+                 <option value = "Bangalore">
+                 <option value = "Delhi">
+                 <option value = "Mumbai">
+                 <option value = "Kolkata">
+             </datalist>
+             <span class="text-danger" *ngIf="(searchFlightFormControl.destination.touched || submitted) && searchFlightFormControl.destination.errors?.required">Enter Destination Airport!</span>
+          </div>
+          <div class="form-group">
+             <label>Depart On</label>
+             <input type="date" class="form-control" placeholder="Select Date" [min]="departureDateSearch" formControlName="departureTime">
+                <span class="text-danger" *ngIf="(searchFlightFormControl.departureTime.touched || submitted) && searchFlightFormControl.departureTime.errors?.required">Select Travel Date!</span>    
+          </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+         </form>
+      </div>
+      <div *ngIf = "!isContain">
+       <h5 style="color:red;"> No Flights Available!!</h5>
+    </div>
+ </div>
+ 
+ 
